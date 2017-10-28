@@ -1,0 +1,29 @@
+//国际教育网直播 开始
+                        case '1800':
+                            let type = data.body.type
+                            if(type == 'ppt_live'){//ppt直播
+                                //ppt直播
+                                let pptId = data.body.pptId
+                                page = data.body.page
+                                $this.hlsDownstream = data.body.hlsDownstream
+                                let url = getString('0321',{"id":pptId})
+                                io.send(url)
+                                $this.model = 5
+                            }else{
+                                $this.model = 0
+                                $this.hlsDownstream = data.body.hlsDownstream
+                            }
+                        break
+                        //关闭直播
+                        case '1801':
+                            $this.model = 7
+                        break
+                        //vod 直播开始通知
+                        case '1820':
+                            $this.model = 9
+                            $this.vodliving = data.body.vodName
+                            break
+                        //vod 直播结束通知
+                        case '1821':
+                            $this.model = 7
+                            break 
