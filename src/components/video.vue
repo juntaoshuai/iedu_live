@@ -36,7 +36,7 @@
 		
 			<!--视频轮播-->
 			<div class="video_content" v-if="prePlayMode == 0 && !islive">
-				<video  x5-video-player-type='h5' x5-video-player-fullscreen='false' v-if="vodList.length" id="lb"  v-bind:src="vodList[index].mp4Url" v-show="isPlaying" v-on:playing="playing" webkit-playsinline playsinline autoplay controls v-on:ended="changes(index,this)"></video>			
+				<video  x5-video-player-type='h5' x5-video-player-fullscreen='false' v-if="vodList.length" id="lb"  v-bind:src="vodList[index].mp4Url" v-show="isPlaying" v-on:playing="playing" webkit-playsinline playsinline autoplay controls v-on:ended="lbVieoChange()"></video>			
 			</div>
 
 			<!-- 直播预告 -->
@@ -70,7 +70,7 @@
 				
 			<!--回顾视频-->
 			<div class="video_content" v-if="model == 9">
-				<video id="backvideo" :poster="reviewArr[rindex].bCoverPage"  v-bind:src="reviewArr[rindex].bPlayUrl" v-show="isPlaying" v-on:playing="playing" webkit-playsinline playsinline autoplay controls v-on:ended="changes(rindex,this)"></video>
+				<video id="backvideo" :poster="reviewArr[rindex].bCoverPage"  v-bind:src="reviewArr[rindex].bPlayUrl" v-show="isPlaying" v-on:playing="playing" webkit-playsinline playsinline autoplay controls v-on:ended="backVideoChange()"></video>
 			</div>
 		</div>
 		
@@ -182,11 +182,16 @@ export default {
 		}
 	},
 	methods: {
-		changes(i, arr) {
-			i++;
-        	i = i == arr.length ? 0 : i
+		lbVieoChange() {
+			this.index++;
+        	this.index = this.index == this.vodList.length ? 0 : this.index
         	document.querySelectorAll('.area_video video')[0].play()
 		}, 
+		backVideoChange() {
+			this.rindex++;
+        	this.rindex = this.rindex == this.reviewArr.length ? 0 : this.rindex
+        	document.querySelectorAll('.area_video video')[0].play()
+		},
 		book: function() {
             if(userLogin.loginType == 2){
 				this.$parent.loginShow = true
