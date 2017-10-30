@@ -14,11 +14,11 @@
 </script>
 <style scoped>
     .popularity{
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 7.6rem;
-            z-index: 1;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 7.56rem;
+        z-index: 1;
     }
     .popularity p{
         font-size: .28rem;
