@@ -100,23 +100,17 @@
     box-flex: 1;
     text-align: center;
     font-size: .28rem;
+    color: #666;
     height: .88rem;
     line-height: .88rem;
     border-bottom: 1px solid #e9e9e9;
-    box-sizing: content-box;
+    cursor: pointer;
 }
 
-.nav-list>ul>li>a {
-    color: #666;
-    /*padding: .245rem .1rem;*/
-    display: block;
-}
-
-.nav-list>ul>li>.active {
+.nav-list ul li.active{
     color: #27aec2;
-    border-bottom: 2px solid #27aec2;
+    border-bottom: 2px solid #18a3b6;
 }
-
 
 .header .icon-fanhui {
     font-family: "iconfont";

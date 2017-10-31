@@ -1,9 +1,7 @@
 <template>
     <div class="nav-list">
         <ul>
-            <li v-for="(item,index) in navItems">
-              <a :index="index"  :class="{active:navActive==index}" @click="navChange(index)"> {{item.con}}</a>
-          </li>
+            <li v-for="(item,index) in navItems" :key="index" :class="{active:navActive==index}" @click="navChange(index)">{{item.con}}</li>
 
         </ul>
     </div>
