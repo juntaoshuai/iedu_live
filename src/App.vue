@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <my-header :room="room" :isLogin="isLogin"></my-header>
         <!-- 视频区域 -->
-            <my-video :vodList="vodList" :model="model" :picArr="picArr" :pptImg="pptImg" :hlsDownstream="hlsDownstream" :vodliving="vodliving" :islive="islive" :reviewArr="reviewArr" :room="room" :registered="registered" :prePlayMode="prePlayMode"></my-video>
+            <my-video :vodList="vodList" :model="model" :picArr="picArr" :pptImg="pptImg" :hlsDownstream="hlsDownstream" :vodliving="vodliving" :islive="islive" :reviewArr="reviewArr" :room="room" :registered="registered" :prePlayMode="prePlayMode" :hlsVoiceDownstream = "hlsVoiceDownstream"></my-video>
             <!--系统消息-->
             <sys-message :nav-active="navActive" :sysMessage="sysMessage"></sys-message>
             <!-- 导航条 -->
@@ -170,6 +170,8 @@ export default {
             status: 0,
             //直播流
             hlsDownstream: '',
+            //直播流音频
+            hlsVoiceDownstream: '',
             //录播视频
             vod: '',
             //录播视频列表
@@ -370,6 +372,7 @@ export default {
                                 let pptId = data.body.pptId
                                 page = data.body.page
                                 $this.hlsDownstream = data.body.hlsDownstream
+                                $this.hlsVoiceDownstream = data.body.hlsVoiceDownstream
                                 let url = getString('0321',{"id":pptId})
                                 io.send(url)
                                 $this.model = 1

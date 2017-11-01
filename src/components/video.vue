@@ -15,7 +15,9 @@
 			<!-- ppt直播 -->
 			<div class="swiper-containerPic"  v-if="model==1 && islive">
 				<!--<p>如果您听不到直播声音，建议用电脑观看PPT直播</p>-->
-				<audio v-bind:src="hlsDownstream" controls autoplay></audio>
+				<audio v-if="hlsVoiceDownstream" id="voice" v-bind:src="hlsVoiceDownstream" controls autoplay></audio>
+
+				<audio v-else v-bind:src="hlsDownstream" controls autoplay></audio>
 				<img v-bind:src="pptImg" alt=""/>
 			</div>
 			
@@ -127,6 +129,9 @@ export default {
 			type: Array
 		},
 		hlsDownstream: {
+			type: String
+		},
+		hlsVoiceDownstream: {
 			type: String
 		},
 		pptImg: {
