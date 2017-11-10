@@ -289,10 +289,7 @@ export default {
                             // 会员模式下，允许游客进入直播间，5秒后自动弹出登录弹窗
                             if(watchMode == 1 && $this.isLogin == 2){
                                 setTimeout(()=>{
-                                    // noLogin();
-                                    window.location.href="http://live.ieduchina.com/audience-login-page?callback="+location.href
-
-                                    // $(".login-title").html("请登录后继续观看");
+                                    showLogin({'title':'请登录后继续观看'});
                                 },5000);
                             }
 

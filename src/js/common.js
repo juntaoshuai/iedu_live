@@ -34,11 +34,7 @@ export function newDate(){
 
 //未登录弹窗开启
 export function noLogin(){
-	/*let pop = document.getElementById("pop")
-	let diaglog = document.getElementById("diaglog")
-	pop.style.display = "block"
-	diaglog.style.display = "block"*/
-    window.location.href="http://live.ieduchina.com/audience-login-page?callback="+location.href
+	showLogin();
 
 }
 
