@@ -6,6 +6,11 @@ import store from './store/index'
 import VueResource from 'vue-resource'
 import resize from './js/resize'
 import VueChatScroll from 'vue-chat-scroll'
+
+import { MessageBox } from 'mint-ui'
+Vue.component(MessageBox.name, MessageBox)
+
+
 Vue.use(VueChatScroll)
 
 

@@ -80,8 +80,8 @@ import login from './components/login'
 import {socket,port,socketUrl} from './js/socket'
 import {getString,getUserName,getHistoryChat, nologin} from './js/common'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
 import send from './js/send'
+import { MessageBox } from 'mint-ui';
 
 export default {
     components: {
@@ -290,8 +290,29 @@ export default {
                             if(watchMode == 1 && $this.isLogin == 2){
                                 setTimeout(()=>{
                                     showLogin({'title':'请登录后继续观看'});
+                                    $("video").hide();
+                                    $("video")[0].pause();
+
                                 },5000);
                             }
+
+                            //关闭登录弹框
+                            if($this.room.watchMode == 1 && $this.isLogin == 2){
+                                closeLogin(() => {
+                                    MessageBox.confirm('你确定要退出吗？建议登录后观看','',{
+                                        confirmButtonText: '确定退出',
+                                        cancelButtonText: '返回',
+                                        cancelButtonClass: 'cancel-login',       
+                                        closeOnClickModal: false
+                                    })
+                                    .then(action => {
+                                        window.location.href="http://live.ieduchina.com/";
+                                    });
+                                })
+                            } else {
+                                closeLogin();
+                            }
+                            
 
                             $this.room.start = data.body.startTime
                             $this.room.end = data.body.endTime
@@ -642,6 +663,8 @@ export default {
         $this.$store.dispatch("getSchoolInfo")
         $this.$store.dispatch("getActList")
         $this.$store.dispatch("getRecommendVedio")
+
+       
         
     },
     
