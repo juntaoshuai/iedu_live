@@ -3,7 +3,7 @@
 		<footer class="footer" v-if="navActive == 0">
 			<div class="footer_center">
 				<span class="web-font icon-smile" @click="showLook"></span>
-				<div class="chat-form" @click="showLogin()">
+				<div class="chat-form">
 					<input v-model="val" type="text" id="text_val" required placeholder="请输入您想了解的问题">
 					<button id="mes_btn" @click="send">发送</button>
 				</div>
@@ -15,7 +15,7 @@
     			</div>
 			</div>
 			<!--未登录-->
-			<!-- <div class="login_nocontent" v-show="isLogin==1" @click="show"></div> -->
+			<div class="login_nocontent" v-show="isLogin==2" @click="showLogin()"></div>
 		</footer>
 
 		<!-- 表情 -->
